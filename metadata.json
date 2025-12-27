@@ -1,0 +1,7 @@
+{
+  "name": "Propbotix | The AI Agency",
+  "description": "Propbotix specializes in building rapid AI prototypes, autonomous agents, and enterprise-grade intelligent systems for every industry.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
