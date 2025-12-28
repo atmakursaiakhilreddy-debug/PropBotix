@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar.tsx';
 import Hero from './components/Hero.tsx';
-import GeminiDemo from './components/GeminiDemo.tsx';
 import { Twitter, Linkedin, Link as LinkIcon, Check, Zap, Cpu, Layers, ShieldCheck, Gauge, Code2, Loader2, Send, User, Phone, Mail, Box } from 'lucide-react';
 
 const blogPosts = [
@@ -288,18 +287,6 @@ const App: React.FC = () => {
           <>
             <Hero />
             
-            {/* Logic Engine Demo Section - New Integration */}
-            <section id="demo" className="py-72 max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 relative bg-black">
-              <div className="text-center mb-40">
-                <span className="text-blue-500 font-bold text-[10px] uppercase tracking-[1.2em] mb-16 block font-mono-tech">Live Intelligence Access</span>
-                <h2 className="text-6xl md:text-[9.5rem] font-bold tracking-[-0.05em] text-white uppercase italic font-heading">LOGIC <span className="text-blue-600">ENGINE</span></h2>
-                <p className="text-zinc-500 text-2xl font-light mt-12 max-w-4xl mx-auto">Interface with our core reasoning kernels. From product blueprints to global research analysis, experience the Propbotix advantage in real-time.</p>
-              </div>
-              <div className="max-w-6xl mx-auto">
-                <GeminiDemo />
-              </div>
-            </section>
-
             {/* Core Units Section - Obsidian background */}
             <section id="services" className="py-72 max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 border-t border-white/[0.03] relative bg-obsidian">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-64 bg-gradient-to-b from-blue-600 to-transparent"></div>
