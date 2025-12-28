@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import Navbar from './components/Navbar.tsx';
+import Hero from './components/Hero.tsx';
 import { Twitter, Linkedin, Link as LinkIcon, Check, Zap, Cpu, Layers, ShieldCheck, Gauge, Code2, Loader2, Send, User, Phone, Mail } from 'lucide-react';
 
 const blogPosts = [
