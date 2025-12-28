@@ -1,12 +1,12 @@
-
 import { GoogleGenAI, Type, Modality } from "@google/genai";
 
 const getAI = () => new GoogleGenAI({ apiKey: process.env.API_KEY });
 
+// Using 'gemini-3-pro-preview' for complex text tasks (architectural analysis)
 export const generateMVPBlueprint = async (idea: string) => {
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3-flash-preview', // Switched to flash for better reliability in sandbox
+    model: 'gemini-3-pro-preview',
     contents: `Act as a CTO and Product Architect. Create a detailed MVP blueprint for this idea: ${idea}. Include: 1. Tech Stack, 2. Core Features, 3. Development Phases, and 4. Potential AI Integrations. Format with clear headings and Markdown.`,
     config: {
       temperature: 0.8,
@@ -15,6 +15,7 @@ export const generateMVPBlueprint = async (idea: string) => {
   return response.text;
 };
 
+// Using 'gemini-2.5-flash-image' for image generation as per guidelines
 export const generateConceptVisual = async (prompt: string) => {
   const ai = getAI();
   const response = await ai.models.generateContent({
@@ -39,6 +40,7 @@ export const generateConceptVisual = async (prompt: string) => {
   return null;
 };
 
+// Using 'gemini-2.5-flash' for Google Maps grounding compatibility
 export const getUniversalInsights = async (query: string, lat?: number, lng?: number) => {
   const ai = getAI();
   
@@ -81,10 +83,11 @@ export const getUniversalInsights = async (query: string, lat?: number, lng?: nu
   };
 };
 
+// Using 'gemini-3-pro-preview' for general chat and complex reasoning
 export const startGeneralChat = () => {
   const ai = getAI();
   return ai.chats.create({
-    model: 'gemini-3-flash-preview',
+    model: 'gemini-3-pro-preview',
     config: {
       systemInstruction: "You are the Propbotix Core AI. You are a world-class expert in AI implementation, software engineering, and business strategy. Your goal is to help users conceptualize and build any AI-powered system or prototype."
     }

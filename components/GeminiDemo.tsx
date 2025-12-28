@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect, useRef } from 'react';
-import { DemoTool, GroundingChunk } from '../types';
-import { generateMVPBlueprint, generateConceptVisual, getUniversalInsights, startGeneralChat } from '../services/geminiService';
+import { DemoTool, GroundingChunk } from '../types.ts';
+import { generateMVPBlueprint, generateConceptVisual, getUniversalInsights, startGeneralChat } from '../services/geminiService.ts';
 import { 
   AreaChart, 
   Area, 
@@ -19,14 +18,14 @@ interface ChartData {
 
 // Extend global window type
 declare global {
-  /* Fix: Define AIStudio interface to match the environment's expected type and ensure modifiers are identical */
+  /* Define AIStudio interface to match the environment's expected type */
   interface AIStudio {
     hasSelectedApiKey: () => Promise<boolean>;
     openSelectKey: () => Promise<void>;
   }
 
   interface Window {
-    // Fix: Added readonly modifier to match the global declaration in the environment and resolve the "identical modifiers" error
+    /* Added readonly modifier to align with existing global declarations and resolve "identical modifiers" error */
     readonly aistudio: AIStudio;
   }
 }
@@ -91,7 +90,6 @@ const GeminiDemo: React.FC = () => {
             setChartData(json);
             setGrounding(result.chunks);
           } catch (err: any) {
-            // Handle specific API key error by prompting key selection again
             if (err?.message?.includes("Requested entity was not found.")) {
               await window.aistudio.openSelectKey();
             }
@@ -111,7 +109,6 @@ const GeminiDemo: React.FC = () => {
         }
       }
     } catch (error: any) {
-      // Handle specific API key error by prompting key selection again
       if (error?.message?.includes("Requested entity was not found.")) {
         await window.aistudio.openSelectKey();
       }
@@ -134,14 +131,12 @@ const GeminiDemo: React.FC = () => {
 
     try {
       await checkApiKey();
-      // Ensure a fresh GoogleGenAI instance by calling startGeneralChat after key check
       if (!chatRef.current) {
         chatRef.current = startGeneralChat();
       }
       const response = await chatRef.current.sendMessage({ message: userMsg });
       setMessages(prev => [...prev, { role: 'bot', text: response.text || '...' }]);
     } catch (err: any) {
-      // Handle specific API key error by prompting key selection again
       if (err?.message?.includes("Requested entity was not found.")) {
         await window.aistudio.openSelectKey();
       }
@@ -163,7 +158,6 @@ const GeminiDemo: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-1 bg-[#050505] rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
-      {/* Main Workspace */}
       <div className="lg:col-span-12 p-8 md:p-12 min-h-[500px] flex flex-col">
         <div className="flex-1 flex flex-col gap-8">
           <div className="flex bg-white/5 p-1 rounded-full border border-white/10 w-fit mb-8 self-center">
@@ -179,7 +173,7 @@ const GeminiDemo: React.FC = () => {
                 className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${
                   activeTool === tool.id 
                     ? 'bg-blue-600 text-white shadow-lg' 
-                    : 'text-slate-500 hover:text-slate-300'
+                    : 'text-zinc-500 hover:text-zinc-300'
                 }`}
               >
                 {tool.name}
@@ -199,7 +193,7 @@ const GeminiDemo: React.FC = () => {
                     activeTool === DemoTool.ConceptForge ? "e.g. A sleek obsidian smartwatch with holographic display" :
                     "e.g. Competitive landscape of modular AI compute in 2025"
                   }
-                  className="w-full bg-black border border-white/10 rounded-2xl p-6 text-white text-lg focus:outline-none focus:ring-1 focus:ring-blue-500/50 min-h-[120px] resize-none placeholder:text-slate-700 font-light"
+                  className="w-full bg-black border border-white/10 rounded-2xl p-6 text-white text-lg focus:outline-none focus:ring-1 focus:ring-blue-500/50 min-h-[120px] resize-none placeholder:text-zinc-700 font-light"
                 />
               </div>
               <button
@@ -213,10 +207,10 @@ const GeminiDemo: React.FC = () => {
           ) : (
             <div className="flex-1 flex flex-col gap-4">
               <div className="flex-1 overflow-y-auto space-y-4 p-6 bg-black rounded-2xl border border-white/5 font-mono text-xs h-[300px]">
-                {messages.length === 0 && <div className="text-slate-800 font-mono-tech py-20 text-center uppercase tracking-widest text-[10px]">Awaiting console connection...</div>}
+                {messages.length === 0 && <div className="text-zinc-800 font-mono-tech py-20 text-center uppercase tracking-widest text-[10px]">Awaiting console connection...</div>}
                 {messages.map((m, i) => (
                   <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <div className={`max-w-[85%] p-4 rounded-2xl ${m.role === 'user' ? 'bg-white text-black font-bold' : 'bg-white/5 text-slate-300 border border-white/10'}`}>
+                    <div className={`max-w-[85%] p-4 rounded-2xl ${m.role === 'user' ? 'bg-white text-black font-bold' : 'bg-white/5 text-zinc-300 border border-white/10'}`}>
                       <span className="opacity-50 text-[10px] block mb-1 uppercase tracking-tighter">{m.role}</span>
                       {m.text}
                     </div>
@@ -277,17 +271,8 @@ const GeminiDemo: React.FC = () => {
                               </linearGradient>
                             </defs>
                             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ffffff05" />
-                            <XAxis 
-                              dataKey="name" 
-                              axisLine={false} 
-                              tickLine={false}
-                              tick={{fill: '#4b5563', fontSize: 10}}
-                            />
-                            <YAxis 
-                              axisLine={false} 
-                              tickLine={false}
-                              tick={{fill: '#4b5563', fontSize: 10}}
-                            />
+                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#4b5563', fontSize: 10}} />
+                            <YAxis axisLine={false} tickLine={false} tick={{fill: '#4b5563', fontSize: 10}} />
                             <Tooltip 
                               contentStyle={{ 
                                 backgroundColor: 'rgba(10, 10, 10, 0.9)', 
@@ -297,22 +282,13 @@ const GeminiDemo: React.FC = () => {
                               }}
                               itemStyle={{ color: '#3b82f6', fontWeight: 'bold' }}
                             />
-                            <Area 
-                              type="monotone" 
-                              dataKey="value" 
-                              stroke="#3b82f6" 
-                              strokeWidth={3}
-                              fillOpacity={1} 
-                              fill="url(#colorValue)" 
-                              animationDuration={1500}
-                            />
+                            <Area type="monotone" dataKey="value" stroke="#3b82f6" strokeWidth={3} fillOpacity={1} fill="url(#colorValue)" animationDuration={1500} />
                           </AreaChart>
                         </ResponsiveContainer>
                       </div>
                     </div>
                   )}
-
-                  <div className="bg-black p-8 rounded-3xl border border-white/10 text-slate-300 font-light leading-relaxed max-h-[500px] overflow-y-auto prose prose-invert max-w-none text-base">
+                  <div className="bg-black p-8 rounded-3xl border border-white/10 text-zinc-300 font-light leading-relaxed max-h-[500px] overflow-y-auto prose prose-invert max-w-none text-base">
                     {output}
                   </div>
                 </div>
@@ -320,7 +296,7 @@ const GeminiDemo: React.FC = () => {
 
               {grounding.length > 0 && (
                 <div className="mt-8 pt-8 border-t border-white/5">
-                  <p className="text-[10px] font-black text-slate-500 mb-4 uppercase tracking-widest font-mono-tech">Verification Sources</p>
+                  <p className="text-[10px] font-black text-zinc-500 mb-4 uppercase tracking-widest font-mono-tech">Verification Sources</p>
                   <div className="flex flex-wrap gap-3">
                     {grounding.map((chunk, idx) => (
                       <a 
