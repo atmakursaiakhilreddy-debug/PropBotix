@@ -258,7 +258,7 @@ const App: React.FC = () => {
     );
     
     // This triggers the email sending via the user's default mail client.
-    window.location.href = `mailto:contact@propbotix.ai?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:atmakursaiakhilreddy@gmail.com?subject=${subject}&body=${body}`;
     
     setStatus('engaged');
     setFormData({ name: '', phone: '', email: '' });
