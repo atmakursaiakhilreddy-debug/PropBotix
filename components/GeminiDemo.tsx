@@ -157,10 +157,10 @@ const GeminiDemo: React.FC = () => {
   }, [activeTool]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-1 bg-[#050505] rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-1 bg-[#013220] rounded-3xl border border-[#D1F2EB]/20 overflow-hidden shadow-2xl">
       <div className="lg:col-span-12 p-8 md:p-12 min-h-[500px] flex flex-col">
         <div className="flex-1 flex flex-col gap-8">
-          <div className="flex bg-white/5 p-1 rounded-full border border-white/10 w-fit mb-8 self-center">
+          <div className="flex bg-[#D1F2EB]/10 p-1 rounded-full border border-[#D1F2EB]/20 w-fit mb-8 self-center">
             {[
               { id: DemoTool.MVPArchitect, name: 'Architect' },
               { id: DemoTool.ConceptForge, name: 'Forge' },
@@ -172,8 +172,8 @@ const GeminiDemo: React.FC = () => {
                 onClick={() => setActiveTool(tool.id)}
                 className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${
                   activeTool === tool.id 
-                    ? 'bg-blue-600 text-white shadow-lg' 
-                    : 'text-zinc-500 hover:text-zinc-300'
+                    ? 'bg-[#50C878] text-[#D1F2EB] shadow-lg' 
+                    : 'text-[#0B6E4F] hover:text-[#D1F2EB]'
                 }`}
               >
                 {tool.name}
@@ -184,7 +184,7 @@ const GeminiDemo: React.FC = () => {
           {activeTool !== DemoTool.CoreAgent ? (
             <div className="space-y-6">
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-blue-500 uppercase tracking-widest font-mono-tech">Input Parameter</label>
+                <label className="text-[10px] font-black text-[#50C878] uppercase tracking-widest font-mono-tech">Input Parameter</label>
                 <textarea
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
@@ -193,40 +193,40 @@ const GeminiDemo: React.FC = () => {
                     activeTool === DemoTool.ConceptForge ? "e.g. A sleek obsidian smartwatch with holographic display" :
                     "e.g. Competitive landscape of modular AI compute in 2025"
                   }
-                  className="w-full bg-black border border-white/10 rounded-2xl p-6 text-white text-lg focus:outline-none focus:ring-1 focus:ring-blue-500/50 min-h-[120px] resize-none placeholder:text-zinc-700 font-light"
+                  className="w-full bg-[#013220] border border-[#D1F2EB]/20 rounded-2xl p-6 text-[#D1F2EB] text-lg focus:outline-none focus:ring-1 focus:ring-[#50C878]/50 min-h-[120px] resize-none placeholder:text-[#0B6E4F] font-light"
                 />
               </div>
               <button
                 onClick={handleRun}
                 disabled={loading}
-                className="accent-gradient hover:opacity-90 disabled:opacity-50 text-white font-bold uppercase tracking-widest text-[10px] py-4 px-10 rounded-2xl transition-all flex items-center gap-3 mx-auto"
+                className="accent-gradient hover:opacity-90 disabled:opacity-50 text-[#D1F2EB] font-bold uppercase tracking-widest text-[10px] py-4 px-10 rounded-2xl transition-all flex items-center gap-3 mx-auto"
               >
                 {loading ? 'Executing Engine...' : 'Run Simulation'}
               </button>
             </div>
           ) : (
             <div className="flex-1 flex flex-col gap-4">
-              <div className="flex-1 overflow-y-auto space-y-4 p-6 bg-black rounded-2xl border border-white/5 font-mono text-xs h-[300px]">
-                {messages.length === 0 && <div className="text-zinc-800 font-mono-tech py-20 text-center uppercase tracking-widest text-[10px]">Awaiting console connection...</div>}
+              <div className="flex-1 overflow-y-auto space-y-4 p-6 bg-[#013220] rounded-2xl border border-[#D1F2EB]/10 font-mono text-xs h-[300px]">
+                {messages.length === 0 && <div className="text-[#0B6E4F] font-mono-tech py-20 text-center uppercase tracking-widest text-[10px]">Awaiting console connection...</div>}
                 {messages.map((m, i) => (
                   <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <div className={`max-w-[85%] p-4 rounded-2xl ${m.role === 'user' ? 'bg-white text-black font-bold' : 'bg-white/5 text-zinc-300 border border-white/10'}`}>
+                    <div className={`max-w-[85%] p-4 rounded-2xl ${m.role === 'user' ? 'bg-[#D1F2EB] text-[#013220] font-bold' : 'bg-[#D1F2EB]/10 text-[#D1F2EB] border border-[#D1F2EB]/20'}`}>
                       <span className="opacity-50 text-[10px] block mb-1 uppercase tracking-tighter">{m.role}</span>
                       {m.text}
                     </div>
                   </div>
                 ))}
-                {loading && <div className="text-blue-500 animate-pulse text-[10px] font-black uppercase tracking-widest mt-4">Streaming Output...</div>}
+                {loading && <div className="text-[#50C878] animate-pulse text-[10px] font-black uppercase tracking-widest mt-4">Streaming Output...</div>}
               </div>
               <form onSubmit={handleChat} className="flex gap-2">
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Enter command or query..."
-                  className="flex-1 bg-black border border-white/10 rounded-2xl px-6 py-4 text-white text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="flex-1 bg-[#013220] border border-[#D1F2EB]/20 rounded-2xl px-6 py-4 text-[#D1F2EB] text-sm focus:outline-none focus:ring-1 focus:ring-[#50C878]"
                 />
                 <button className="accent-gradient p-4 rounded-2xl hover:opacity-90 transition-all">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#D1F2EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                   </svg>
                 </button>
@@ -235,30 +235,30 @@ const GeminiDemo: React.FC = () => {
           )}
 
           {(output || loading) && (
-            <div className="mt-4 border-t border-white/5 pt-10">
+            <div className="mt-4 border-t border-[#D1F2EB]/10 pt-10">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
-                <span className="text-[10px] font-black text-white uppercase tracking-[0.3em] font-mono-tech">Processing Result</span>
+                <div className="w-2 h-2 rounded-full bg-[#50C878] animate-pulse"></div>
+                <span className="text-[10px] font-black text-[#D1F2EB] uppercase tracking-[0.3em] font-mono-tech">Processing Result</span>
               </div>
               
               {loading && !output ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="h-48 bg-white/5 animate-pulse rounded-2xl"></div>
-                  <div className="h-48 bg-white/5 animate-pulse rounded-2xl"></div>
+                  <div className="h-48 bg-[#D1F2EB]/10 animate-pulse rounded-2xl"></div>
+                  <div className="h-48 bg-[#D1F2EB]/10 animate-pulse rounded-2xl"></div>
                 </div>
               ) : activeTool === DemoTool.ConceptForge ? (
                 <div className="relative group mx-auto max-w-2xl">
-                   <img src={output!} alt="Concept Visual" className="rounded-3xl w-full border border-white/10 shadow-3xl" />
+                   <img src={output!} alt="Concept Visual" className="rounded-3xl w-full border border-[#D1F2EB]/20 shadow-3xl" />
                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-3xl">
-                      <button onClick={() => window.open(output!, '_blank')} className="px-6 py-2 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest">Download Asset</button>
+                      <button onClick={() => window.open(output!, '_blank')} className="px-6 py-2 bg-[#D1F2EB] text-[#013220] rounded-full font-bold text-xs uppercase tracking-widest">Download Asset</button>
                    </div>
                 </div>
               ) : (
                 <div className="flex flex-col gap-10">
                   {chartData && (
-                    <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
-                      <h4 className="text-white font-black text-xs uppercase tracking-widest mb-8 flex items-center gap-3 font-mono-tech">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                    <div className="bg-[#D1F2EB]/10 border border-[#D1F2EB]/20 rounded-3xl p-8">
+                      <h4 className="text-[#D1F2EB] font-black text-xs uppercase tracking-widest mb-8 flex items-center gap-3 font-mono-tech">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#50C878]"></span>
                         {chartData.chartTitle}
                       </h4>
                       <div className="h-[200px] w-full">
@@ -266,37 +266,37 @@ const GeminiDemo: React.FC = () => {
                           <AreaChart data={chartData.data}>
                             <defs>
                               <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
-                                <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                                <stop offset="5%" stopColor="#50C878" stopOpacity={0.3}/>
+                                <stop offset="95%" stopColor="#50C878" stopOpacity={0}/>
                               </linearGradient>
                             </defs>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ffffff05" />
-                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#4b5563', fontSize: 10}} />
-                            <YAxis axisLine={false} tickLine={false} tick={{fill: '#4b5563', fontSize: 10}} />
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(209, 242, 235, 0.1)" />
+                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#0B6E4F', fontSize: 10}} />
+                            <YAxis axisLine={false} tickLine={false} tick={{fill: '#0B6E4F', fontSize: 10}} />
                             <Tooltip 
                               contentStyle={{ 
-                                backgroundColor: 'rgba(10, 10, 10, 0.9)', 
-                                border: '1px solid rgba(255, 255, 255, 0.1)',
+                                backgroundColor: 'rgba(1, 50, 32, 0.9)', 
+                                border: '1px solid rgba(209, 242, 235, 0.2)',
                                 borderRadius: '12px',
                                 backdropFilter: 'blur(10px)'
                               }}
-                              itemStyle={{ color: '#3b82f6', fontWeight: 'bold' }}
+                              itemStyle={{ color: '#50C878', fontWeight: 'bold' }}
                             />
-                            <Area type="monotone" dataKey="value" stroke="#3b82f6" strokeWidth={3} fillOpacity={1} fill="url(#colorValue)" animationDuration={1500} />
+                            <Area type="monotone" dataKey="value" stroke="#50C878" strokeWidth={3} fillOpacity={1} fill="url(#colorValue)" animationDuration={1500} />
                           </AreaChart>
                         </ResponsiveContainer>
                       </div>
                     </div>
                   )}
-                  <div className="bg-black p-8 rounded-3xl border border-white/10 text-zinc-300 font-light leading-relaxed max-h-[500px] overflow-y-auto prose prose-invert max-w-none text-base">
+                  <div className="bg-[#013220] p-8 rounded-3xl border border-[#D1F2EB]/20 text-[#D1F2EB] font-light leading-relaxed max-h-[500px] overflow-y-auto prose prose-invert max-w-none text-base">
                     {output}
                   </div>
                 </div>
               )}
 
               {grounding.length > 0 && (
-                <div className="mt-8 pt-8 border-t border-white/5">
-                  <p className="text-[10px] font-black text-zinc-500 mb-4 uppercase tracking-widest font-mono-tech">Verification Sources</p>
+                <div className="mt-8 pt-8 border-t border-[#D1F2EB]/10">
+                  <p className="text-[10px] font-black text-[#0B6E4F] mb-4 uppercase tracking-widest font-mono-tech">Verification Sources</p>
                   <div className="flex flex-wrap gap-3">
                     {grounding.map((chunk, idx) => (
                       <a 
@@ -304,7 +304,7 @@ const GeminiDemo: React.FC = () => {
                         href={chunk.maps?.uri || chunk.web?.uri} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="text-[10px] font-bold bg-white/5 hover:bg-white/10 text-blue-400 px-4 py-2 rounded-full border border-white/5 transition-all"
+                        className="text-[10px] font-bold bg-[#D1F2EB]/10 hover:bg-[#D1F2EB]/20 text-[#50C878] px-4 py-2 rounded-full border border-[#D1F2EB]/10 transition-all"
                       >
                         {chunk.maps?.title || chunk.web?.title || 'External Reference'}
                       </a>

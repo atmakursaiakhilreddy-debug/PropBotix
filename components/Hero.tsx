@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div id="home" className="relative pt-72 pb-56 lg:pt-80 lg:pb-72 overflow-hidden mesh-gradient bg-black">
+    <div id="home" className="relative pt-72 pb-56 lg:pt-80 lg:pb-72 overflow-hidden mesh-gradient bg-[#013220]">
       <div className="absolute inset-0 structural-grid [mask-image:radial-gradient(ellipse_70%_50%_at_50%_50%,#000_80%,transparent_100%)] opacity-60"></div>
       
       <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
           <span className="gradient-text">Scale.</span>
         </h1>
         
-        <p className="text-xl md:text-3xl text-zinc-500 max-w-5xl mx-auto mb-24 font-light leading-relaxed tracking-tight">
+        <p className="text-xl md:text-3xl text-[#0B6E4F] max-w-5xl mx-auto mb-24 font-light leading-relaxed tracking-tight">
           Propbotix is the architectural partner for rapid AI innovation. <br className="hidden md:block" /> 
           We transform abstract logic into production-grade autonomous systems.
         </p>
@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
           <button 
             onClick={handleScrollToContact}
-            className="px-14 py-7 bg-white text-black font-bold rounded-2xl hover:bg-zinc-100 transition-all text-xs uppercase tracking-[0.3em] shadow-2xl shadow-white/5 font-heading"
+            className="px-14 py-7 bg-[#D1F2EB] text-[#013220] font-bold rounded-2xl hover:bg-[#50C878] hover:text-[#D1F2EB] transition-all text-xs uppercase tracking-[0.3em] shadow-2xl shadow-[#D1F2EB]/10 font-heading"
           >
             Book Strategy
           </button>

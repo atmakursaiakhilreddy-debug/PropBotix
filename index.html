@@ -10,22 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Sophisticated Black Palette */
-            --black-absolute: #000000;
-            --black-obsidian: #050505;
-            --black-onyx: #0a0a0a;
-            --black-ebon: #0f0f0f;
-            --black-jet: #141414;
+            /* New Color Palette */
+            --mint-whisper: #D1F2EB;
+            --emerald-green: #50C878;
+            --royal-amethyst: #0B6E4F;
+            --dark-evergreen: #013220;
             
-            --accent-primary: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.15);
-            --zinc-muted: #71717a;
-            --zinc-bright: #e4e4e7;
+            --accent-primary: #50C878;
+            --accent-glow: rgba(80, 200, 120, 0.15);
+            --text-muted: #0B6E4F;
+            --text-bright: #D1F2EB;
         }
         body {
             font-family: 'Outfit', sans-serif;
-            background-color: var(--black-absolute);
-            color: #ffffff;
+            background-color: var(--dark-evergreen);
+            color: var(--mint-whisper);
             letter-spacing: -0.01em;
             overflow-x: hidden;
             margin: 0;
@@ -38,45 +37,45 @@
             font-family: 'Space Grotesk', monospace;
             letter-spacing: 0.12em;
         }
-        .bg-obsidian { background-color: var(--black-obsidian); }
-        .bg-onyx { background-color: var(--black-onyx); }
-        .bg-ebon { background-color: var(--black-ebon); }
-        .bg-jet { background-color: var(--black-jet); }
+        .bg-obsidian { background-color: rgba(1, 50, 32, 0.8); }
+        .bg-onyx { background-color: rgba(11, 110, 79, 0.3); }
+        .bg-ebon { background-color: rgba(1, 50, 32, 0.6); }
+        .bg-jet { background-color: rgba(11, 110, 79, 0.2); }
 
         .glass-morphism {
-            background: rgba(10, 10, 10, 0.6);
+            background: rgba(1, 50, 32, 0.6);
             backdrop-filter: blur(32px);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(209, 242, 235, 0.1);
         }
         .gradient-text {
-            background: linear-gradient(135deg, #ffffff 40%, #52525b 100%);
+            background: linear-gradient(135deg, #D1F2EB 40%, #50C878 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .stroke-text {
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+            -webkit-text-stroke: 1px rgba(209, 242, 235, 0.2);
             color: transparent;
         }
         .accent-gradient {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            background: linear-gradient(135deg, #50C878 0%, #0B6E4F 100%);
         }
         .card-hover {
             transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .card-hover:hover {
             transform: translateY(-12px);
-            border-color: rgba(59, 130, 246, 0.3);
-            background: rgba(59, 130, 246, 0.02);
-            box-shadow: 0 50px 100px -30px rgba(0, 0, 0, 1), 0 0 40px -10px var(--accent-glow);
+            border-color: rgba(80, 200, 120, 0.4);
+            background: rgba(80, 200, 120, 0.05);
+            box-shadow: 0 50px 100px -30px rgba(1, 50, 32, 1), 0 0 40px -10px var(--accent-glow);
         }
         .mesh-gradient {
             background-image: 
-                radial-gradient(at 10% 10%, rgba(37, 99, 235, 0.12) 0px, transparent 40%),
-                radial-gradient(at 90% 90%, rgba(99, 102, 241, 0.08) 0px, transparent 40%);
+                radial-gradient(at 10% 10%, rgba(80, 200, 120, 0.15) 0px, transparent 40%),
+                radial-gradient(at 90% 90%, rgba(11, 110, 79, 0.1) 0px, transparent 40%);
         }
         .structural-grid {
-            background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), 
-                              linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(209, 242, 235, 0.02) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(209, 242, 235, 0.02) 1px, transparent 1px);
             background-size: 100px 100px;
         }
         
@@ -84,7 +83,7 @@
             font-family: 'Syne', sans-serif;
             font-size: 3.5rem;
             font-weight: 700;
-            color: #ffffff;
+            color: #D1F2EB;
             margin-top: 7rem;
             margin-bottom: 3rem;
             line-height: 1;
@@ -93,7 +92,7 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: 0.9rem;
             font-weight: 700;
-            color: #3b82f6;
+            color: #50C878;
             text-transform: uppercase;
             letter-spacing: 0.3em;
             margin-top: 5rem;
@@ -101,19 +100,19 @@
         }
         .prose-custom p {
             margin-bottom: 3rem;
-            color: #a1a1aa;
+            color: rgba(209, 242, 235, 0.7);
             font-size: 1.4rem;
             line-height: 1.8;
             font-weight: 300;
         }
         .prose-custom ul {
             margin-bottom: 4rem;
-            border-left: 1px solid rgba(59, 130, 246, 0.3);
+            border-left: 1px solid rgba(80, 200, 120, 0.4);
             padding-left: 3rem;
         }
         .prose-custom li {
             margin-bottom: 1.5rem;
-            color: #d4d4d8;
+            color: rgba(209, 242, 235, 0.9);
             font-size: 1.25rem;
         }
 
@@ -121,19 +120,19 @@
             width: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--black-absolute);
+            background: var(--dark-evergreen);
         }
         ::-webkit-scrollbar-thumb {
-            background: var(--black-jet);
+            background: var(--royal-amethyst);
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #3b82f6;
+            background: var(--emerald-green);
         }
 
         @media (max-width: 768px) {
             .stroke-text {
-                -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.1);
+                -webkit-text-stroke: 0.5px rgba(209, 242, 235, 0.2);
             }
         }
     </style>
